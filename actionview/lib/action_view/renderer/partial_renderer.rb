@@ -282,7 +282,7 @@ module ActionView
           identifier: template.identifier,
           layout: layout && layout.virtual_path
         ) do |payload|
-          content = template.render(view, locals, add_to_stack: !block) do |*name|
+          content = template.render(view, locals, ActionView::OutputBuffer.new, !block) do |*name|
             view._layout_for(*name, &block)
           end
 
